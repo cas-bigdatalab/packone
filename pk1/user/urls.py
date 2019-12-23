@@ -20,7 +20,7 @@ def yunda_login(request):
     else:
         user, created = User.objects.get_or_create(username='yunda', is_staff=True)
     auth_login(request, user)
-    return HttpResponseRedirect(reverse('cloud-list'))
+    return HttpResponseRedirect(reverse('admin:clouds_cloud_changelist'))
 
 urlpatterns = [
     re_path(r'^', include(ROUTER.urls)),
