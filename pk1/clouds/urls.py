@@ -3,7 +3,7 @@ from rest_framework import routers
 from . import views
 
 ROUTER = routers.DefaultRouter()
-ROUTER.register(r'clouds', views.CloudViewSet)
+ROUTER.register(r'clouds', views.CloudViewSet, base_name='cloud')
 ROUTER.register(r'images', views.ImageViewSet, base_name='image')
 ROUTER.register(r'instancetemplates', views.InstanceTemplateViewSet)
 ROUTER.register(r'instanceblueprints', views.InstanceBlueprintViewSet, base_name='instanceblueprint')
