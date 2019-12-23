@@ -10,7 +10,8 @@ ROUTER.register(r'credential', views.CredentialViewSet, base_name='credential')
 
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
-from django.http import HttpResponseRedirect, reverse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def yunda_login(request):
     users=User.objects.filter(username="yunda")
