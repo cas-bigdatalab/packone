@@ -177,6 +177,14 @@ class Cluster(models.Model,M2MOperatableMixin):
     def metrics(self):
         return self.driver.metrics
     @property
+    def if_need_scale_out(self):
+        return self.scale.auto and self.status==INSTANCE_STATUS.active.value and self.driver.hdfs_usage>0.75 
+    def auto_scale(self):
+        while True:
+            if self.if_need_scale_out:
+                self.scale_one_step()
+            time.sleep(3600)
+    @property
     def ready(self):
         return self.built_time
     @property

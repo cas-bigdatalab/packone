@@ -24,3 +24,6 @@ class Driver(object):
         for h in self.client.cluster.hosts:
             m.append({h.name: h.metrics})
         return m
+    @property
+    def hdfs_usage(self):
+        return self.client.cluster.HDFS_usage

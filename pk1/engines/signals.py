@@ -62,6 +62,7 @@ def scale_out(sender,instance,**kwargs):
     if sender==models.Cluster:
         if not kwargs['created'] or instance.deleting: return
         instance.scale_one_step()
+        Thread(target=instance.auto_scale).start()
         return
     for cluster in instance.cluster_set.select_for_update():
         cluster.built_time=now()
